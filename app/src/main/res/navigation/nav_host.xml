@@ -15,26 +15,26 @@
             app:destination="@id/first_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/seccondFragment"
-        android:name="edu.bc.cs470assignment2.SeccondFragment"
-        android:label="fragment_seccond"
-        tools:layout="@layout/fragment_seccond" />
-    <fragment
         android:id="@+id/thirdFragment"
         android:name="edu.bc.cs470assignment2.ThirdFragment"
         android:label="fragment_third"
-        tools:layout="@layout/fragment_third">
-        <action
-            android:id="@+id/action_thirdFragment_to_seccondFragment"
-            app:destination="@id/seccondFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_third" />
     <fragment
         android:id="@+id/first_fragment"
         android:name="edu.bc.cs470assignment2.first_fragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first">
         <action
-            android:id="@+id/action_first_fragment_to_thirdFragment"
+            android:id="@+id/action_first_fragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="edu.bc.cs470assignment2.fragments.SecondFragment"
+        android:label="SecondFragment"
+        tools:layout="@layout/fragment_second">
+        <action
+            android:id="@+id/action_secondFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
     </fragment>
 </navigation>

@@ -16,14 +16,24 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
 
-        val navController = this.findNavController(R.id.myNavHostFragment)
+        val navController = this.findNavController(R.id.myNavHost)
 
 
         mediaPlayer = MediaPlayer.create(this, R.raw.jeopardy_theme_song)
         mediaPlayer.isLooping = true
         mediaPlayer.start()
 
-        
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mediaPlayer.stop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mediaPlayer.start()
     }
 
 }
