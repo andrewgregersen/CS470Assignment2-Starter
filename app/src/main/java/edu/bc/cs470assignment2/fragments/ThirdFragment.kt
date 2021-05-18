@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import edu.bc.cs470assignment2.R
 import edu.bc.cs470assignment2.Timer
 import edu.bc.cs470assignment2.databinding.FragmentThirdBinding
@@ -28,6 +30,16 @@ class ThirdFragment : Fragment() {
         )
 
         runTimer()
+
+        binding.button.setOnClickListener {
+            activity?.finish()
+        }
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            this@ThirdFragment.findNavController()
+                .navigate(R.id.action_thirdFragment_to_titleFragment)
+        }
+        callback.isEnabled = true
 
 
         return binding.root
