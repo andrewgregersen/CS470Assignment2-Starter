@@ -30,10 +30,16 @@ class SecondFragment : Fragment() {
             R.layout.fragment_second, container, false
         )
 
+        second = SecondFragmentArgs.fromBundle(requireArguments()).second
+
+        binding.progBar.progress = second.toFloat()
+
         runTimer()
 
         binding.button.setOnClickListener {
-            this.findNavController().navigate(R.id.action_secondFragment_to_thirdFragment)
+            this.findNavController().navigate(
+                SecondFragmentDirections.actionSecondFragmentToThirdFragment().setSecond(second)
+            )
         }
 
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {

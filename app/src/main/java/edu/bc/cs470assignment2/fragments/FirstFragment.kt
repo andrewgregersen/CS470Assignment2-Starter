@@ -29,14 +29,18 @@ class FirstFragment : Fragment() {
             inflater,
             R.layout.fragment_first, container, false
         )
+        
 
         runTimer()
-        setHasOptionsMenu(true)
+
 
 
 
         binding.button.setOnClickListener {
-            this.findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
+            timer.stopTimer()
+            this.findNavController().navigate(
+                FirstFragmentDirections.actionFirstFragmentToSecondFragment().setSecond(second)
+            )
         }
 
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {

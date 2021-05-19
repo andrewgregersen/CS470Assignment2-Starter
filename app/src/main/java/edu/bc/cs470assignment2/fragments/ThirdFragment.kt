@@ -19,15 +19,20 @@ class ThirdFragment : Fragment() {
     private lateinit var binding: FragmentThirdBinding
     private var second = 0
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentThirdBinding>(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_third, container, false
         )
+
+        second = ThirdFragmentArgs.fromBundle(requireArguments()).second
+
+        binding.progBar.progress = second.toFloat()
 
         runTimer()
 
@@ -36,6 +41,7 @@ class ThirdFragment : Fragment() {
         }
 
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            timer.stopTimer()
             this@ThirdFragment.findNavController()
                 .navigate(R.id.action_thirdFragment_to_titleFragment)
         }
@@ -56,7 +62,7 @@ class ThirdFragment : Fragment() {
     }
 
     private fun runTimer() {
-        timer = Timer("SecondFrag Timer")
+        timer = Timer("ThirdFrag Timer")
         timer.startTimer {
             second++
             if (second == 60) {

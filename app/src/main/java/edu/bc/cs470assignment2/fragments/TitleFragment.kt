@@ -35,6 +35,8 @@ class TitleFragment : Fragment() {
                 .navigate(R.id.action_secondFragment_to_titleFragment)
         }
         callback.isEnabled = true
+        
+
         return binding.root
 
     }
